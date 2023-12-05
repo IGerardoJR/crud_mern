@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import uniqid from "uniqid";
+import axios from "axios";
 function AgregarUsuario() {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
@@ -12,7 +13,18 @@ function AgregarUsuario() {
       nombre: nombre,
       email: email,
       telefono: telefono,
+      idusuario: uniqid(),
     };
+
+    console.log(usuario);
+    axios
+      .post("api/usuario/agregarUsuario", usuario)
+      .then((res) => {
+        alert(res.data);
+      })
+      .then((err) => {
+        console.log(err);
+      });
   };
 
   return (
