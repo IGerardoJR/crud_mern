@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
 function AgregarUsuario() {
-  const agregarUsuario = () => {
-    console.log("Agregando el usuario");
+  const [nombre, setNombre] = useState("");
+  const [email, setEmail] = useState("");
+  const [telefono, setTelefono] = useState("");
+
+  const agregar = () => {
+    // console.log("Agregando el usuario");
+
+    let usuario = {
+      nombre: nombre,
+      email: email,
+      telefono: telefono,
+    };
   };
 
   return (
@@ -17,11 +27,23 @@ function AgregarUsuario() {
             <label htmlFor="nombre" className="form-label">
               Nombre
             </label>
-            <input type="text" className="form-control"></input>
+            <input
+              type="text"
+              className="form-control"
+              value={nombre}
+              onChange={(e) => {
+                setNombre(e.target.value);
+              }}
+            ></input>
           </div>
 
           <div className="mb-3">
-            <label htmlFor="email" className="form-label">
+            <label
+              htmlFor="email"
+              className="form-label"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            >
               Email
             </label>
             <input type="text" className="form-control"></input>
@@ -30,11 +52,16 @@ function AgregarUsuario() {
               <label htmlFor="telefono" className="form-label">
                 Telefono
               </label>
-              <input type="text" className="form-control"></input>
+              <input
+                type="text"
+                className="form-control"
+                value={telefono}
+                onChange={(e) => setTelefono(e.target.telefono)}
+              ></input>
             </div>
             {/*  */}
 
-            <button className="btn btn-success" onClick={agregarUsuario}>
+            <button className="btn btn-success" onClick={agregar}>
               Guardar usuario
             </button>
           </div>
