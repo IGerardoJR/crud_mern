@@ -21,6 +21,7 @@ module.exports = router;
 // });
 
 // Ruta para que nos permita agregar al usuario.
+// agregarUsuario
 router.post("/agregarUsuario", (req, res) => {
   const nuevousuario = new ModeloUsuario({
     nombre: req.body.nombre,
@@ -35,4 +36,9 @@ router.post("/agregarUsuario", (req, res) => {
   //     res.send("Hubo un error al agregar el usuario!");
   //   }
   nuevousuario.save(res.send("Usuario agregado!"));
+});
+
+// Ruta para obtener todos los usuarios
+router.get("/obtenerUsuarios", (req, res) => {
+  ModeloUsuario.find({}, res.send());
 });
