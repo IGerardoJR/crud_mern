@@ -22,23 +22,28 @@ module.exports = router;
 
 // Ruta para que nos permita agregar al usuario.
 // agregarUsuario
-router.post("/agregarUsuario", (req, res) => {
-  const nuevousuario = new ModeloUsuario({
-    nombre: req.body.nombre,
-    email: req.body.email,
-    telefono: req.body.telefono,
-    idusuario: req.body.idusuario,
-  });
-  // nuevousuario.save(function (err) {
-  //   if (!err) {
-  //     res.send("Usuario agregado correctamente.");
-  //   } else {
-  //     res.send("Hubo un error al agregar el usuario!");
-  //   }
-  nuevousuario.save(res.send("Usuario agregado!"));
+router.post("/agregarUsuario", async (req, res) => {
+  try {
+    const nuevousuario = new ModeloUsuario({
+      nombre: req.body.nombre,
+      email: req.body.email,
+      telefono: req.body.telefono,
+      idusuario: req.body.idusuario,
+    });
+    await nuevousuario.save();
+    res.send("Usuario agregado exitosamente!");
+  } catch (err) {
+    console.log(err);
+    res.send("Hubo un error al agregar el usuario");
+  }
 });
 
 // Ruta para obtener todos los usuarios
-router.get("/obtenerUsuarios", (req, res) => {
-  ModeloUsuario.find({}, res.send());
+router.get("/obtenerUsuarios", async (req, res) => {
+  try {
+    const usuario = await ModeloUsuario.find({});
+    res.send(usuario);
+  } catch (err) {
+    res.send("No se pudieron obtener los usuarios");
+  }
 });
