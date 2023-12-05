@@ -8,6 +8,9 @@ const PUERTO = 5000;
 const archivoDB = require("./conexion");
 // importancion del archivo de las rutas
 const rutausuario = require("./usuario");
+// imporamos la extesion de body-parser para obtener la informacion de los campos.
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: "true" }));
 
 app.use("/api/usuario", rutausuario);
 
