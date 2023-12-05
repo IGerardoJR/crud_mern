@@ -4,10 +4,12 @@ import EditarUsuario from "./componentes/EditarUsuario";
 import ListaUsuarios from "./componentes/ListaUsuarios";
 import UsuarioIndividual from "./componentes/UsuarioIndividual";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./componentes/Navbar";
 
 function App() {
   return (
     <div className="App">
+      <Navbar />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<ListaUsuarios />}></Route>
