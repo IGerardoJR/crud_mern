@@ -12,13 +12,16 @@ function EditarUsuario() {
     axios
       .post("/api/usuario/obtenerdatausuario", {
         idusuario: params.idusuario,
+        nombre: params.nombre,
+        email: params.email,
+        telefono: params.telefono,
       })
       .then((res) => {
         console.log(res.data[0]);
         const datausuario = res.data[0];
         setNombre(datausuario.nombre);
-        setNombre(datausuario.email);
-        setNombre(datausuario.telefono);
+        setEmail(datausuario.email);
+        setTelefono(datausuario.telefono);
       });
   }, []);
 
@@ -84,7 +87,7 @@ function EditarUsuario() {
             </div>
             {/*  */}
             <button className="btn btn-success" onClick={editarUsuario}>
-              Guardar usuario
+              Editar usuario
             </button>
           </div>
         </div>
