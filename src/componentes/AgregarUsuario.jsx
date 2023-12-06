@@ -50,16 +50,12 @@ function AgregarUsuario() {
           </div>
 
           <div className="mb-3">
-            <label
-              htmlFor="email"
-              className="form-label"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            >
+            <label htmlFor="email" className="form-label">
               Email
             </label>
             <input type="text" className="form-control"></input>
-
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             <div className="mb-3">
               <label htmlFor="telefono" className="form-label">
                 Telefono
@@ -68,11 +64,10 @@ function AgregarUsuario() {
                 type="text"
                 className="form-control"
                 value={telefono}
-                onChange={(e) => setTelefono(e.target.telefono)}
+                onChange={(e) => setTelefono(e.target.value)}
               ></input>
             </div>
             {/*  */}
-
             <button className="btn btn-success" onClick={agregar}>
               Guardar usuario
             </button>
