@@ -14,7 +14,10 @@ function App() {
         <Routes>
           <Route path="/" element={<ListaUsuarios />}></Route>
           <Route path="/agregarUsuario" element={<AgregarUsuario />}></Route>
-          <Route path="/editarUsuario" element={<EditarUsuario />}></Route>
+          <Route
+            path="/editarUsuario/:idusuario"
+            element={<EditarUsuario />}
+          ></Route>
         </Routes>
       </BrowserRouter>
     </div>
