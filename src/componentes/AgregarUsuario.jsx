@@ -53,9 +53,13 @@ function AgregarUsuario() {
             <label htmlFor="email" className="form-label">
               Email
             </label>
-            <input type="text" className="form-control"></input>
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            <input
+              type="text"
+              className="form-control"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+
             <div className="mb-3">
               <label htmlFor="telefono" className="form-label">
                 Telefono

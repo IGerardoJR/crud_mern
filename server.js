@@ -10,8 +10,7 @@ const archivoDB = require("./conexion");
 const rutausuario = require("./usuario");
 // imporamos la extesion de body-parser para obtener la informacion de los campos.
 const bodyParser = require("body-parser");
-app.use(bodyParser.json);
-app.use(bodyParser.urlencoded({ extended: "true" }));
+app.use(bodyParser.urlencoded({ extended: "true" }), bodyParser.json());
 
 app.use("/api/usuario", rutausuario);
 
