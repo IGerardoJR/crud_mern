@@ -1,12 +1,94 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 function EditarUsuario() {
   const params = useParams();
 
+  const [nombre, setNombre] = useState("");
+  const [email, setEmail] = useState("");
+  const [telefono, setTelefono] = useState("");
+
+  useEffect(() => {
+    axios
+      .post("/api/usuario/obtenerdatausuario", {
+        idusuario: params.idusuario,
+      })
+      .then((res) => {
+        console.log(res.data[0]);
+        const datausuario = res.data[0];
+        setNombre(datausuario.nombre);
+        setNombre(datausuario.email);
+        setNombre(datausuario.telefono);
+      });
+  }, []);
+
+  // Funcion que actualice.
+  function editarUsuario() {}
   return (
-    <div>
-      <h2>EditarUsuario</h2>
-      <h3>El ID del usuario es: {params.idusuario}</h3>
+    <div className="container">
+      <div className="row">
+        <h2 className="mt-4">Editar usuario</h2>
+      </div>
+
+      <div className="row">
+        <div className="col-sm-6 offset-3">
+          {/* Id del usuario */}
+          <div className="mb-3">
+            <label htmlFor="id" className="form-label">
+              IdUsuario
+            </label>
+
+            <input
+              type="text"
+              className="form-control disabled"
+              style={{ backgroundColor: "var(--bs-gray-200)" }}
+              value={params.idusuario}
+            ></input>
+          </div>
+
+          <div className="mb-3">
+            <label htmlFor="nombre" className="form-label">
+              Nombre
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              value={nombre}
+              onChange={(e) => {
+                setNombre(e.target.value);
+              }}
+            ></input>
+          </div>
+
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">
+              Email
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+
+            <div className="mb-3">
+              <label htmlFor="telefono" className="form-label">
+                Telefono
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                value={telefono}
+                onChange={(e) => setTelefono(e.target.value)}
+              ></input>
+            </div>
+            {/*  */}
+            <button className="btn btn-success" onClick={editarUsuario}>
+              Guardar usuario
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

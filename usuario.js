@@ -47,3 +47,13 @@ router.get("/obtenerUsuarios", async (req, res) => {
     res.send("No se pudieron obtener los usuarios");
   }
 });
+
+// Ruta para obtener un solo usuario
+router.post("/obtenerdatausuario", async (req, res) => {
+  try {
+    const usuario = await ModeloUsuario.find({ idusuario: req.body.idusuario });
+    res.send(usuario);
+  } catch (err) {
+    res.send("No se pudieron obtener los usuarios");
+  }
+});
