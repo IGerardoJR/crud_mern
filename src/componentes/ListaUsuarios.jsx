@@ -20,10 +20,19 @@ function ListaUsuarios() {
         });
     };
   }, []);
+
+  // Mapear listausuario en objeto usuario
+  const listausuarios = dataUsuarios.map((usuario) => {
+    return (
+      <div>
+        <UsuarioIndividual usuario={usuario} />
+      </div>
+    );
+  });
   return (
     <div>
       <h2>Lista de usuarios</h2>
-      <UsuarioIndividual />
+      {listausuarios}
     </div>
   );
 }
