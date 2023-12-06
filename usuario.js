@@ -57,3 +57,21 @@ router.post("/obtenerdatausuario", async (req, res) => {
     res.send("No se pudieron obtener los usuarios");
   }
 });
+
+// Actualiza usuario.
+
+router.post("/actualizausuario", (req, res) => {
+  try {
+    ModeloUsuario.findOneAndUpdate(
+      { idusuario: req.body.idusuario },
+      {
+        nombre: req.body.nombre,
+        email: req.body.email,
+        telefono: req.body.telefono,
+      }
+    );
+    res.send("Usuario actualizado!");
+  } catch (error) {
+    res.send(error);
+  }
+});

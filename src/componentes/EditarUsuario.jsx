@@ -26,7 +26,26 @@ function EditarUsuario() {
   }, []);
 
   // Funcion que actualice.
-  function editarUsuario() {}
+  function editarUsuario() {
+    // Nuevo objeto para actualizar el usuario.
+    const actualizarusuario = {
+      nombre: nombre,
+      email: email,
+      telefono: telefono,
+      idusuario: params.idusuario,
+    };
+
+    console.log(actualizarusuario);
+    // Hacer la peticion usando axios.
+    axios
+      .post("/api/usuario/actualizausuario", actualizarusuario)
+      .then((res) => {
+        alert(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   return (
     <div className="container">
       <div className="row">
