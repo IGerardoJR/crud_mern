@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+// AOS es una libreria que nos permitira anadir animaciones
+import Aos from "aos";
+import "aos/dist/aos.css";
+
 function UsuarioIndividual({ usuario }) {
   const navegar = useNavigate();
+
+  // Para animacion de scroll al bajar.
+  useEffect(() => {
+    Aos.init();
+  }, []);
+
   // Funcion para eliminar usuario.
   function borrarUsuario(idUsuario) {
     axios
@@ -19,7 +29,7 @@ function UsuarioIndividual({ usuario }) {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-sm-6 offset-3">
+        <div className="col-sm-6 offset-3" data-aos="flip-right">
           <ul className="list-group">
             <li className="list-group-item disabled">{usuario.idusuario}</li>
             <li className="list-group-item">{usuario.nombre}</li>
