@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import uniqid from "uniqid";
 import axios from "axios";
+// Libreria para ventanas emergentes
+import Swal from "sweetalert2";
 function AgregarUsuario() {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
@@ -20,7 +22,7 @@ function AgregarUsuario() {
     axios
       .post("api/usuario/agregarUsuario", usuario)
       .then((res) => {
-        alert(res.data);
+        Swal.fire("Felicidades", "El usuario se creo con exito");
       })
       .then((err) => {
         console.log(err);

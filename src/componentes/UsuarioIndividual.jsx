@@ -4,6 +4,8 @@ import axios from "axios";
 // AOS es una libreria que nos permitira anadir animaciones
 import Aos from "aos";
 import "aos/dist/aos.css";
+// Libreria para ventanas emergentes
+import Swal from "sweetalert2";
 
 function UsuarioIndividual({ usuario }) {
   const navegar = useNavigate();
