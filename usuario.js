@@ -60,9 +60,9 @@ router.post("/obtenerdatausuario", async (req, res) => {
 
 // Actualiza usuario.
 
-router.post("/actualizausuario", (req, res) => {
+router.post("/actualizausuario", async (req, res) => {
   try {
-    ModeloUsuario.findOneAndUpdate(
+    await ModeloUsuario.findOneAndUpdate(
       { idusuario: req.body.idusuario },
       {
         nombre: req.body.nombre,
