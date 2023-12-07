@@ -59,7 +59,6 @@ router.post("/obtenerdatausuario", async (req, res) => {
 });
 
 // Actualiza usuario.
-
 router.post("/actualizausuario", async (req, res) => {
   try {
     await ModeloUsuario.findOneAndUpdate(
@@ -73,5 +72,15 @@ router.post("/actualizausuario", async (req, res) => {
     res.send("Usuario actualizado!");
   } catch (error) {
     res.send(error);
+  }
+});
+
+// Eliminar usuario.
+router.post("/borrarusuario", async (req, res) => {
+  try {
+    await ModeloUsuario.findOneAndDelete({ idusuario: req.body.idusuario });
+    res.send("Usuario eliminado!");
+  } catch (err) {
+    res.send(err);
   }
 });

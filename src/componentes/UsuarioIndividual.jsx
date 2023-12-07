@@ -1,7 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 function UsuarioIndividual({ usuario }) {
+  const navegar = useNavigate();
+  // Funcion para eliminar usuario.
+  function borrarUsuario(idUsuario) {
+    axios
+      .post("/api/usuario/borrarusuario", { idusuario: idUsuario })
+      .then((res) => {
+        console.log(res.data);
+        alert(res.data);
+        navegar(0);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   return (
     <div className="container">
       <div className="row">
@@ -17,7 +31,12 @@ function UsuarioIndividual({ usuario }) {
               <li className="btn btn-success">Editar</li>
             </Link>
             &nbsp;
-            <button className="btn btn-danger">Borrar</button>
+            <button
+              className="btn btn-danger"
+              onClick={() => borrarUsuario(usuario.idusuario)}
+            >
+              Borrar
+            </button>
             <hr className="mt-4"></hr>
           </div>
         </div>
